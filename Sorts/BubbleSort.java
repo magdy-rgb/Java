@@ -1,53 +1,51 @@
-package Sorts;
-
-import static Sorts.SortUtils.*;
-
-/**
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
- * @see SortAlgorithm
- */
-
-class BubbleSort implements SortAlgorithm {
-    /**
-     * This method implements the Generic Bubble Sort
-     *
-     * @param array The array to be sorted
-     *              Sorts the array in increasing order
-     **/
-
-    @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int i = 0, size = array.length; i < size - 1; ++i) {
-            boolean swapped = false;
-            for (int j = 0; j < size - 1 - i; ++j) {
-            	if (less(array[j], array[j + 1])) {
-            		swap(array, j, j + 1);
-            		swapped = true;
-                }
-            }
-            if (!swapped) {
-                break;
+package bubblesprt;
+ class ArrBub{
+        private double[]a;
+        private int nElement;
+        private void swap(int one, int two){
+            double temp = a[one];
+            a[one] = a[two];
+            a[two] = temp;
+        }
+        public ArrBub(int max){
+            a= new double[max];
+            nElement = 0;
+        }
+        public void insert(double value){
+            a[nElement] = value;
+            nElement++;
+        }
+        public void display(){
+            for(int i=0;i<nElement;i++)
+                System.out.print(a[i] + " ");
+        }
+        void BubbleSort(){
+            int out ,in;
+            for(out = nElement-1;out>1;out--){
+                for(in=0;in<nElement;in++){
+                    if(a[in]>=a[in+1]){
+                        swap(in , in+1);
+                    }
             }
         }
-        return array;
-    }
-
-    // Driver Program
+        }
+ }
+      class BubbleSprt {
     public static void main(String[] args) {
-
-        // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        BubbleSort bubbleSort = new BubbleSort();
-        bubbleSort.sort(integers);
-
-        // Output => 231, 78, 54, 23, 12, 9, 6, 4, 1
-        print(integers);
-
-        // String Input
-        String[] strings = {"c", "a", "e", "b", "d"};
-        //Output => e, d, c, b, a
-        print(bubbleSort.sort(strings));
-
+        int maxSize = 100;
+        ArrBub arr;
+        arr =new ArrBub(maxSize);
+        arr.insert(22);
+        arr.insert(88);
+        arr.insert(11);
+        arr.insert(10);
+        arr.insert(90);
+        arr.insert(00);
+        arr.display();
+        arr.BubbleSort();
+        arr.display();
     }
 }
+
+
+
